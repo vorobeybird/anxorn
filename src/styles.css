@@ -1,0 +1,29 @@
+/* You can add global styles to this file, and also import other style files */
+:root {
+  --background: #f6f6f6;
+  --foreground: #0f0f0f;
+  --button-bg: #ffffff;
+  --button-fg: #0f0f0f;
+  --button-border: #dcdcdc;
+  /* Add more variables as needed */
+}
+
+body {
+  color: var(--foreground);
+  background-color: var(--background);
+}
+
+button {
+  background-color: var(--button-bg);
+  color: var(--button-fg);
+  border: 1px solid var(--button-border);
+  cursor: pointer;
+}
+
+body.dark-theme {
+  --background: #2f2f2f;
+  --foreground: #f6f6f6;
+  --button-bg: #0f0f0f98;
+  --button-fg: #ffffff;
+  --button-border: #ffffff;
+}
