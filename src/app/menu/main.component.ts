@@ -52,5 +52,6 @@ export class MainMenuComponent {
         { label: 'Save', route: '/save', icon: '👤' },
         { label: 'Load', route: '/load', icon: '📂' },
         { label: 'Settings', route: '/settings', icon: '⚙️' },
+        { label: 'Game', route: '/game', icon: '🎮' }
     ];
 }

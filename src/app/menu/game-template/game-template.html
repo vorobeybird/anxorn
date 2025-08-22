@@ -1,0 +1,21 @@
+<div class="game-container">
+  <!-- 3D Background Canvas -->
+  <canvas #gameCanvas class="game-canvas"></canvas>
+  
+  <!-- 2D Character and UI Overlay -->
+  <div class="game-overlay">
+    <!-- Character sprite -->
+    <!-- <div class="character" 
+         [style.transform]="'translate(' + (characterX * 10 + 50) + 'vw, ' + (50 - characterZ * 10) + 'vh)'">
+      🧙‍♂️
+    </div> -->
+    
+    <!-- Game UI -->
+    <div class="game-ui">
+      <div class="controls">
+        <p>Use WASD or Arrow Keys to move</p>
+        <p>Position: ({{characterX.toFixed(1)}}, {{characterZ.toFixed(1)}})</p>
+      </div>
+    </div>
+  </div>
+</div>
