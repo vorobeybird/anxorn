@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { MainMenuComponent } from './main.component';
 import { Settings } from './settings/settings';
-import { GameComponent } from './game-template/game-template';
+import { GameContainer } from '../game-container/game-container';
 
 export const menuRoutes: Routes = [
   {
@@ -9,7 +9,7 @@ export const menuRoutes: Routes = [
     component: MainMenuComponent,
     children: [
       { path: 'settings', component: Settings },
-      { path: "game", component: GameComponent }
+      { path: "game", component: GameContainer }
     ]
   }
 ];

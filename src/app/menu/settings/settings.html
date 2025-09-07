@@ -1,4 +1,14 @@
 <div class="settings-container">
     <button (click)="toggleTheme()">Toggle Dark Theme</button>
+    <div>
+        @for (language of languages; track language) {
+        <app-button (click)="changeLanguage(language)"
+            [class.active]="isCurrentLanguage(language)"
+            [customClass]="'settings-button'"
+            >
+            {{displayLanguage(language)}}
+        </app-button >
+    }
+    </div>
 </div>
 

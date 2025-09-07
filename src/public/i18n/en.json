@@ -1,7 +1,12 @@
 {
   "app": {
     "menu": {
-        "newgame": "new game"
+      "newgame": "New Game",
+      "menu": "Menu", 
+      "save": "Save Game",
+      "load": "Load Game",
+      "settings": "Settings",
+      "game": "Game"
     }
   }
 }
