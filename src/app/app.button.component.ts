@@ -9,7 +9,9 @@ import { CommonModule } from "@angular/common";
   styles: [`
   `],
   template: `
-    <button [ngClass]="customClass">{{ label }}</button>
+    <button [ngClass]="customClass">
+      <ng-content></ng-content>
+    </button>
   `
 })
 export class ButtonComponent {

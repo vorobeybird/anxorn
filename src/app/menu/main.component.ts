@@ -1,10 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
 import { ButtonComponent } from "../app.button.component";
+import {
+    TranslatePipe
+} from "@ngx-translate/core";
+import { AppTranslationService } from '../translation.service';
 
 interface MenuOption {
-    label: string;
+    translationKey: string; // Changed from label to translationKey
     route: string;
     icon?: string;
 }
@@ -12,17 +16,22 @@ interface MenuOption {
 @Component({
     selector: 'app-main-menu',
     standalone: true,
-    imports: [CommonModule, RouterModule, ButtonComponent],
+    imports: [CommonModule, RouterModule, ButtonComponent, TranslatePipe],
     template: `
         <div class="container menu-layout">
-        <nav class="main-menu">
-            <div *ngFor="let option of menuOptions">
-                <app-button (click)="navigateTo(option.route)" [label]="option.label" [customClass]="'menu-button'"></app-button>
+            <div>{{ 'app.menu.newgame' | translate }}</div>
+            <nav class="main-menu">
+                    @for (option of menuOptions; track menuOptions){
+                    <app-button     
+                        (click)="navigateTo(option.route)" 
+                        [customClass]="'menu-button'">
+                        {{option.translationKey | translate}}
+                    </app-button>
+                    }
+            </nav>
+            <div>
+                <router-outlet></router-outlet>
             </div>
-        </nav>
-        <div>
-            <router-outlet></router-outlet>
-        </div>
         </div>
     `,
     styles: [
@@ -41,16 +50,21 @@ interface MenuOption {
     ]
 })
 export class MainMenuComponent {
-    constructor(private router: Router) {}
+    private translationService = inject(AppTranslationService);
+
+    constructor(private router: Router) {
+    }
 
     navigateTo(route: string): void {
         this.router.navigate([route]);
     }
 
     menuOptions: MenuOption[] = [
-        { label: 'Menu', route: '', icon: '🏠' },
-        { label: 'Save', route: '/save', icon: '👤' },
-        { label: 'Load', route: '/load', icon: '📂' },
-        { label: 'Settings', route: '/settings', icon: '⚙️' },
+        { translationKey: 'app.menu.newgame', route: '/newgame' },
+        { translationKey: 'app.menu.menu', route: '' },
+        { translationKey: 'app.menu.save', route: '/save' },
+        { translationKey: 'app.menu.load', route: '/load' },
+        { translationKey: 'app.menu.settings', route: '/settings' },
+        { translationKey: 'app.menu.game', route: '/game' }
     ];
 }
